@@ -14,6 +14,7 @@ public class StockService
         {
             var filePath = Path.Combine(AppContext.BaseDirectory, "data/stock_info.csv");
             using var reader = new StreamReader(filePath);
+            Console.WriteLine($"Attempting to load file from: {Path.GetFullPath("data/stock_info.csv")}");
             using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true
