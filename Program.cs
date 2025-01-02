@@ -5,13 +5,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
+    options.AddPolicy("AllowAll", corsPolicyBuilder =>
+    {
+        corsPolicyBuilder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
+/*builder.Services.AddCors(options =>
+{
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(Environment.GetEnvironmentVariable("TRUSTED_IP") ?? "http://localhost:5173") 
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
-});
+});*/
 
 DotEnv.Load();
 
