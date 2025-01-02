@@ -1,6 +1,7 @@
-@Basic_Stock_Viewer_Backend_HostAddress = http://localhost:5172
+### Search Stocks Endpoint
+GET http://localhost:5000/api/stocks/search?query=apple HTTP/1.1
+Content-Type: application/json
 
-GET {{Basic_Stock_Viewer_Backend_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
+### Get Stock Data Endpoint
+GET http://localhost:5000/api/stocks/get_data?stock=AAPL&start=2023-01-01&end=2023-12-31 HTTP/1.1
+Content-Type: application/json
