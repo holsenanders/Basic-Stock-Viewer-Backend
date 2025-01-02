@@ -180,4 +180,19 @@ public class StocksController : ControllerBase
             ? value 
             : 0m;
     }
+    
+    [HttpGet("search")]
+    public IActionResult Search([FromQuery] string query)
+    {
+        if (string.IsNullOrWhiteSpace(query))
+            return BadRequest("Query parameter is required.");
+
+        // Call the StockService to get matching stocks
+        var results = _stockService.Search(query);
+
+        if (results == null || !results.Any())
+            return NotFound("No matching stocks found.");
+
+        return Ok(results);
+    }
 }
