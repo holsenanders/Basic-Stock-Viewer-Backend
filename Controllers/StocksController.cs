@@ -64,7 +64,7 @@ public class StocksController : ControllerBase
                 function = "TIME_SERIES_MONTHLY"; 
             }
 
-            var client = new RestClient("https://www.alphavantage.co");
+            var client = new RestClient("https://www.alphavantage.com");
             var request = new RestRequest("/query");
             request.AddQueryParameter("function", function);
             request.AddQueryParameter("symbol", stock);
