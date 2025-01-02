@@ -12,7 +12,8 @@ public class StockService
     {
         try
         {
-            using var reader = new StreamReader("data/stock_info.csv");
+            var filePath = Path.Combine(AppContext.BaseDirectory, "data/stock_info.csv");
+            using var reader = new StreamReader(filePath);
             using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true
