@@ -187,11 +187,13 @@ public class StocksController : ControllerBase
         if (string.IsNullOrWhiteSpace(query))
             return BadRequest("Query parameter is required.");
 
-        // Call the StockService to get matching stocks
         var results = _stockService.Search(query);
-
-        if (results == null || !results.Any())
-            return NotFound("No matching stocks found.");
+        
+        Console.WriteLine("Search Results:");
+        foreach (var result in results)
+        {
+            Console.WriteLine(JsonSerializer.Serialize(result));
+        }
 
         return Ok(results);
     }
